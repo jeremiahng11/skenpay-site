@@ -16,7 +16,7 @@ def index(request):
     """Serve frontend/index.html directly via file I/O, bypassing Django's
     template loader so the path resolves correctly regardless of working
     directory or rootDirectory configuration."""
-    index_path = settings.BASE_DIR.parent / 'frontend' / 'index.html'
+    index_path = settings.BASE_DIR.parent.parent / 'frontend' / 'index.html'
     try:
         with open(index_path, 'r', encoding='utf-8') as f:
             content = f.read()
