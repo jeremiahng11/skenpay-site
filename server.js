@@ -7,11 +7,6 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from current directory
 app.use(express.static(path.join(__dirname)));
 
-// Serve index.html for all routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 app.listen(PORT, () => {
   console.log(`SkenPay site running on port ${PORT}`);
 });
