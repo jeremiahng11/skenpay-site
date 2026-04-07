@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import JsonResponse
-from django.views.generic import RedirectView
+from django.views.generic import TemplateView
 
 # Customise admin branding
 admin.site.site_header = "SkenPay KYC Admin"
@@ -14,8 +14,8 @@ def health(request):
     return JsonResponse({"status": "ok", "service": "SkenPay KYC API"})
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/admin/', permanent=False)),
     path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='index.html')),
     path('api/kyc/', include('kyc.urls')),
     path('health/', health),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
