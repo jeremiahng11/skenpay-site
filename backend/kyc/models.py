@@ -74,8 +74,8 @@ class KYCApplication(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField()
-    nationality = models.CharField(max_length=4, choices=COUNTRY_CHOICES)
-    country_of_residence = models.CharField(max_length=4, choices=COUNTRY_CHOICES)
+    nationality = models.CharField(max_length=5, choices=COUNTRY_CHOICES)
+    country_of_residence = models.CharField(max_length=5, choices=COUNTRY_CHOICES)
     email = models.EmailField(unique=True)
     phone_country_code = models.CharField(max_length=6, default='+65')
     phone_number = models.CharField(max_length=20)
@@ -86,13 +86,13 @@ class KYCApplication(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100, blank=True)
     postal_code = models.CharField(max_length=20)
-    country = models.CharField(max_length=4, choices=COUNTRY_CHOICES)
+    country = models.CharField(max_length=5, choices=COUNTRY_CHOICES)
 
     # ── IDENTITY DOCUMENT ──
     id_type = models.CharField(max_length=20, choices=ID_TYPE_CHOICES)
     id_number = models.CharField(max_length=50)
     id_expiry_date = models.DateField()
-    id_issuing_country = models.CharField(max_length=4, choices=COUNTRY_CHOICES)
+    id_issuing_country = models.CharField(max_length=5, choices=COUNTRY_CHOICES)
 
     # ── DOCUMENT UPLOADS ──
     id_front_image = models.ImageField(upload_to='kyc_docs/id_front/', blank=True, null=True)
